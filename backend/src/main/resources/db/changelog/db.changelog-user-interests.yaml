@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: lucas.mendes
+      changes:
+        - createTable:
+            tableName: user_interests
+            columns:
+              - column:
+                  name: user_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+              - column:
+                  name: interest
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: user_interests
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_user_interests_user
+
+        - addUniqueConstraint:
+            tableName: user_interests
+            columnNames: user_id, interest
+            constraintName: uk_user_interest_unique

@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: lucas.mendes
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: profile_image_url
+                  type: varchar(500)
+              - column:
+                  name: xp
+                  type: int
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: level
+                  type: int
+                  defaultValueNumeric: 1
+                  constraints:
+                    nullable: false

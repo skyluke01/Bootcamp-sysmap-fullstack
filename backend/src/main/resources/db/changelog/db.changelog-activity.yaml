@@ -1,0 +1,79 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: lucas.mendes
+      changes:
+        - createTable:
+            tableName: activities
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: description
+                  type: text
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: image_url
+                  type: varchar(500)
+
+              - column:
+                  name: activity_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: location
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: visibility
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: confirmation_code
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: creator_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+
+        - addForeignKeyConstraint:
+            baseTableName: activities
+            baseColumnNames: creator_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_activities_creator
